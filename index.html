@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mateo Peña Rendón · Networking, Ciberseguridad y Multicloud</title>
+<meta name="description" content="Portafolio de Mateo Peña Rendón: networking, ciberseguridad e IT multicloud.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f8fb;
+    --surface: #ffffff;
+    --text: #0f1b2d;
+    --muted: #55637a;
+    --line: #dde3ee;
+    --accent: #1a73e8;
+    --accent-2: #0f9d8a;
+    --accent-3: #7b4bd6;
+    --shadow: 0 10px 30px rgba(15, 27, 45, .08);
+    --radius: 18px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b1220;
+      --surface: #131d30;
+      --text: #e8eef9;
+      --muted: #9aa8c0;
+      --line: #22304a;
+      --accent: #6aa7ff;
+      --accent-2: #3fd1bd;
+      --accent-3: #b493ff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b1220;
+    --surface: #131d30;
+    --text: #e8eef9;
+    --muted: #9aa8c0;
+    --line: #22304a;
+    --accent: #6aa7ff;
+    --accent-2: #3fd1bd;
+    --accent-3: #b493ff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  img, svg { max-width: 100%; display: block; }
+  a { color: var(--accent); }
+  .wrap { width: min(1100px, 100% - 32px); margin-inline: auto; }
+
+  /* Header */
+  header.top {
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    border-bottom: 1px solid var(--line);
+  }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+  .brand { font-weight: 800; text-decoration: none; color: var(--text); letter-spacing: -.01em; }
+  nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  nav a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: .95rem; }
+  nav a:hover { color: var(--text); }
+
+  /* Hero */
+  .hero { padding: 72px 0 48px; }
+  .hero-grid { display: grid; gap: 40px; align-items: center; grid-template-columns: 1.1fr .9fr; }
+  .eyebrow {
+    display: inline-block; font-size: .85rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent);
+    padding: 6px 12px; border-radius: 999px; margin-bottom: 18px;
+  }
+  h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.15; margin: 0 0 16px; letter-spacing: -.02em; }
+  .lead { font-size: 1.1rem; color: var(--muted); max-width: 52ch; margin: 0 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 12px 20px; border-radius: 12px; font-weight: 600; text-decoration: none;
+    border: 1px solid var(--line); color: var(--text); background: var(--surface);
+  }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .hero-art { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); padding: 24px; }
+
+  /* Sections */
+  section { padding: 56px 0; }
+  .section-title { font-size: 1.8rem; margin: 0 0 8px; letter-spacing: -.01em; }
+  .section-sub { color: var(--muted); margin: 0 0 32px; }
+
+  /* Cards */
+  .cards { display: grid; gap: 22px; grid-template-columns: repeat(3, 1fr); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column;
+  }
+  .card .art { background: color-mix(in srgb, var(--accent) 6%, var(--surface)); border-bottom: 1px solid var(--line); padding: 18px; }
+  .card:nth-child(2) .art { background: color-mix(in srgb, var(--accent-2) 8%, var(--surface)); }
+  .card:nth-child(3) .art { background: color-mix(in srgb, var(--accent-3) 8%, var(--surface)); }
+  .card .body { padding: 22px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .card h3 { margin: 0; font-size: 1.2rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .97rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+  .tag { font-size: .8rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+
+
+  /* Plataformas */
+  .platforms { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); margin-top: 28px; }
+  .platform {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow);
+    padding: 18px 20px; display: flex; align-items: center; gap: 14px;
+  }
+  .platform .ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; flex: 0 0 44px; font-weight: 800; font-size: .85rem; color: #fff; }
+  .platform strong { display: block; }
+  .platform small { color: var(--muted); }
+  @media (max-width: 900px) { .platforms { grid-template-columns: 1fr; } }
+
+
+  /* Servicios ilustrados */
+  .services { display: grid; gap: 16px; grid-template-columns: repeat(4, 1fr); }
+  .svc {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 20px 16px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px;
+  }
+  .svc svg { width: 72px; height: 72px; }
+  .svc strong { font-size: .95rem; }
+  .svc small { color: var(--muted); font-size: .8rem; }
+  @media (max-width: 900px) { .services { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 420px) { .services { grid-template-columns: 1fr; } }
+
+
+  /* Estado de la API */
+  .api-status { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); padding: 18px 22px; margin-top: 28px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: #9aa8c0; display: inline-block; margin-right: 8px; }
+  .dot.ok { background: var(--accent-2); }
+  .dot.err { background: #e5484d; }
+  .api-status code { font-size: .9rem; color: var(--muted); }
+
+  /* About */
+  .about { display: grid; gap: 36px; grid-template-columns: .8fr 1.2fr; align-items: start; }
+  .skills { display: grid; gap: 12px; }
+  .skill { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+  .skill strong { display: block; margin-bottom: 6px; }
+  .bar { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; }
+  .bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius: 999px; }
+
+  /* Contact */
+  .contact { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); padding: 36px; text-align: center; }
+  .contact p { color: var(--muted); max-width: 60ch; margin: 0 auto 22px; }
+
+  footer { padding: 28px 0; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .cards { grid-template-columns: 1fr; }
+    .hero-grid, .about { grid-template-columns: 1fr; }
+    .hero { padding-top: 48px; }
+  }
+  @media (max-width: 560px) {
+    nav { gap: 12px; }
+    .top .wrap { flex-direction: column; align-items: flex-start; }
+    .contact { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio">Mateo Peña Rendón</a>
+    <nav>
+      <a href="#enfoque">Enfoque</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <div class="wrap hero" id="inicio">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Networking · Ciberseguridad · Multicloud</span>
+        <h1>Conecto, protejo y escalo la infraestructura de tu organización.</h1>
+        <p class="lead">Diseño y opero redes, aseguro los entornos y llevo las cargas de trabajo a la nube con criterios de costo, rendimiento y seguridad.</p>
+        <div class="cta">
+          <a class="btn primary" href="#enfoque">Ver mis áreas</a>
+          <a class="btn" href="#contacto">Contáctame</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="Ilustración de red conectada a la nube">
+        <svg viewBox="0 0 400 300" role="img" aria-label="Red de nodos conectados a nube, con escudo de seguridad">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#1a73e8"/>
+              <stop offset="1" stop-color="#0f9d8a"/>
+            </linearGradient>
+          </defs>
+          <!-- líneas -->
+          <g stroke="#1a73e8" stroke-opacity=".5" stroke-width="2" fill="none">
+            <path d="M70 90 L200 60 L330 100"/>
+            <path d="M70 90 L120 210 L250 230"/>
+            <path d="M200 60 L250 230"/>
+            <path d="M330 100 L250 230"/>
+            <path d="M120 210 L200 150 L330 100"/>
+          </g>
+          <!-- nodos -->
+          <g>
+            <circle cx="70" cy="90" r="16" fill="url(#g1)"/>
+            <circle cx="200" cy="60" r="16" fill="url(#g1)"/>
+            <circle cx="330" cy="100" r="16" fill="url(#g1)"/>
+            <circle cx="120" cy="210" r="16" fill="url(#g1)"/>
+            <circle cx="250" cy="230" r="16" fill="url(#g1)"/>
+            <circle cx="200" cy="150" r="12" fill="#7b4bd6"/>
+          </g>
+          <!-- nube -->
+          <g transform="translate(262,20)">
+            <path d="M20 46 a16 16 0 0 1 4 -31 a22 22 0 0 1 42 4 a14 14 0 0 1 4 27 z" fill="none" stroke="#7b4bd6" stroke-width="3"/>
+            <text x="8" y="72" font-size="12" fill="#7b4bd6" font-family="Inter, sans-serif">Multicloud</text>
+          </g>
+          <!-- escudo -->
+          <g transform="translate(40,200)">
+            <path d="M22 0 L44 8 V26 C44 42 34 52 22 58 C10 52 0 42 0 26 V8 Z" fill="#0f9d8a" opacity=".9"/>
+            <path d="M14 28 L20 34 L32 20" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enfoque -->
+  <section id="enfoque">
+    <div class="wrap">
+      <h2 class="section-title">Mis áreas de trabajo</h2>
+      <p class="section-sub">Tres frentes que se complementan: la red que conecta, la seguridad que protege y la nube que escala.</p>
+
+      <div class="cards">
+        <!-- Networking -->
+        <article class="card">
+          <div class="art">
+            <svg viewBox="0 0 320 180" role="img" aria-label="Topología de red con router, switch y equipos">
+              <g stroke="#1a73e8" stroke-width="2" stroke-opacity=".6" fill="none">
+                <path d="M160 40 L80 110"/><path d="M160 40 L240 110"/><path d="M160 40 L160 140"/>
+                <path d="M80 110 L40 160"/><path d="M80 110 L120 160"/>
+                <path d="M240 110 L200 160"/><path d="M240 110 L280 160"/>
+              </g>
+              <rect x="136" y="20" width="48" height="30" rx="6" fill="#1a73e8"/>
+              <rect x="56" y="96" width="48" height="26" rx="6" fill="#1a73e8" opacity=".8"/>
+              <rect x="216" y="96" width="48" height="26" rx="6" fill="#1a73e8" opacity=".8"/>
+              <rect x="136" y="132" width="48" height="26" rx="6" fill="#1a73e8" opacity=".6"/>
+              <circle cx="40" cy="162" r="10" fill="#0f9d8a"/><circle cx="120" cy="162" r="10" fill="#0f9d8a"/>
+              <circle cx="200" cy="162" r="10" fill="#0f9d8a"/><circle cx="280" cy="162" r="10" fill="#0f9d8a"/>
+            </svg>
+          </div>
+          <div class="body">
+            <h3>Networking</h3>
+            <p>Diseño, configuración y mantenimiento de redes LAN, WAN y VPN. Enrutamiento, segmentación con VLAN y conectividad híbrida con la nube.</p>
+            <div class="tags"><span class="tag">VPC</span><span class="tag">VPN</span><span class="tag">Interconnect</span><span class="tag">VLAN</span><span class="tag">Routing</span></div>
+          </div>
+        </article>
+
+        <!-- Ciberseguridad -->
+        <article class="card">
+          <div class="art">
+            <svg viewBox="0 0 320 180" role="img" aria-label="Escudo con candado y capas de protección">
+              <g fill="none" stroke="#0f9d8a" stroke-width="2" stroke-opacity=".5">
+                <circle cx="160" cy="90" r="78"/><circle cx="160" cy="90" r="56"/>
+              </g>
+              <path d="M160 36 L206 52 V92 C206 122 186 140 160 150 C134 140 114 122 114 92 V52 Z" fill="#0f9d8a"/>
+              <rect x="146" y="88" width="28" height="22" rx="4" fill="#fff"/>
+              <path d="M152 88 V80 a8 8 0 0 1 16 0 V88" fill="none" stroke="#fff" stroke-width="4"/>
+              <circle cx="60" cy="40" r="6" fill="#0f9d8a" opacity=".7"/><circle cx="268" cy="140" r="6" fill="#0f9d8a" opacity=".7"/>
+            </svg>
+          </div>
+          <div class="body">
+            <h3>Ciberseguridad</h3>
+            <p>Protección de redes y accesos: firewalls, reglas de acceso, gestión de identidades y permisos mínimos, y revisión de configuraciones frente a buenas prácticas.</p>
+            <div class="tags"><span class="tag">IAM</span><span class="tag">Firewall</span><span class="tag">Cloud Armor</span><span class="tag">Hardening</span></div>
+          </div>
+        </article>
+
+        <!-- Multicloud -->
+        <article class="card">
+          <div class="art">
+            <svg viewBox="0 0 320 180" role="img" aria-label="Tres nubes conectadas entre sí">
+              <g fill="none" stroke="#7b4bd6" stroke-width="2" stroke-opacity=".6" stroke-dasharray="4 4">
+                <path d="M100 100 L160 60 L220 100"/><path d="M100 100 L220 100"/>
+              </g>
+              <g fill="#7b4bd6">
+                <circle cx="100" cy="110" r="34" opacity=".85"/><circle cx="160" cy="80" r="42" opacity=".95"/><circle cx="222" cy="110" r="34" opacity=".75"/>
+                <rect x="100" y="110" width="122" height="34" rx="0" opacity=".85"/>
+              </g>
+              <text x="160" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="#7b4bd6" font-family="Inter, sans-serif">Google Cloud · AWS · Azure</text>
+            </svg>
+          </div>
+          <div class="body">
+            <h3>IT Multicloud</h3>
+            <p>Arquitectura y migración de cargas a Google Cloud y otras nubes, con análisis de costos, dimensionamiento y evaluación de infraestructura antes de migrar.</p>
+            <div class="tags"><span class="tag">Migration Center</span><span class="tag">GKE</span><span class="tag">FinOps</span><span class="tag">IaC</span></div>
+          </div>
+        </article>
+      </div>
+      <div class="platforms" aria-label="Plataformas de nube">
+        <div class="platform">
+          <div class="ico" style="background:#fff;border:1px solid var(--line)">
+            <svg viewBox="0 0 24 24" width="26" height="26" role="img" aria-label="Google Cloud"><path fill="#4285F4" d="M12.19 2.38a9.344 9.344 0 0 0-9.234 6.893c.053-.02-.055.013 0 0-3.875 2.551-3.922 8.11-.247 10.941l.006-.007-.007.03a6.717 6.717 0 0 0 4.077 1.356h5.173l.03.03h5.192c6.687.053 9.376-8.605 3.835-12.35a9.365 9.365 0 0 0-2.821-4.552l-.043.043.006-.05A9.344 9.344 0 0 0 12.19 2.38zm-.358 4.146c1.244-.04 2.518.368 3.486 1.15a5.186 5.186 0 0 1 1.862 4.078v.518c3.53-.07 3.53 5.262 0 5.193h-5.193l-.008.009v-.04H6.785a2.59 2.59 0 0 1-1.067-.23h.001a2.597 2.597 0 1 1 3.437-3.437l3.013-3.012A6.747 6.747 0 0 0 8.11 8.24c.018-.01.04-.026.054-.023a5.186 5.186 0 0 1 3.67-1.69z"/></svg>
+          </div>
+          <div><strong>Google Cloud</strong><small>Compute Engine, GKE, Migration Center</small></div>
+        </div>
+        <div class="platform">
+          <div class="ico" style="background:#FF9900" aria-label="AWS">AWS</div>
+          <div><strong>Amazon Web Services</strong><small>EC2, VPC, IAM, S3</small></div>
+        </div>
+        <div class="platform">
+          <div class="ico" style="background:#0078D4" aria-label="Microsoft Azure">Az</div>
+          <div><strong>Microsoft Azure</strong><small>VNet, Entra ID, Azure Monitor</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios">
+    <div class="wrap">
+      <h2 class="section-title">Servicios que domino</h2>
+      <p class="section-sub">Los componentes con los que diseño y opero entornos en nube, con ejemplos de cada plataforma.</p>
+      <div class="services">
+        <div class="svc">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+  <rect x="10" y="8" width="44" height="16" rx="4" fill="var(--accent)"/>
+  <rect x="10" y="26" width="44" height="16" rx="4" fill="var(--accent)" opacity=".8"/>
+  <rect x="10" y="44" width="44" height="12" rx="4" fill="var(--accent)" opacity=".6"/>
+  <circle cx="46" cy="16" r="2.5" fill="#fff"/><circle cx="46" cy="34" r="2.5" fill="#fff"/><circle cx="46" cy="50" r="2" fill="#fff"/>
+  <rect x="16" y="13" width="18" height="3" rx="1.5" fill="#fff" opacity=".8"/><rect x="16" y="31" width="18" height="3" rx="1.5" fill="#fff" opacity=".8"/>
+</svg>
+          <strong>Máquinas virtuales</strong>
+          <small>Compute Engine · EC2 · VM</small>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+  <rect x="6" y="6" width="52" height="52" rx="10" fill="none" stroke="var(--accent-2)" stroke-width="3" stroke-dasharray="6 4"/>
+  <rect x="12" y="14" width="18" height="16" rx="4" fill="var(--accent-2)"/>
+  <rect x="34" y="14" width="18" height="16" rx="4" fill="var(--accent-2)" opacity=".7"/>
+  <rect x="23" y="38" width="18" height="14" rx="4" fill="var(--accent-2)" opacity=".85"/>
+  <path d="M21 30 V38 M43 30 V38 M32 30 V38" stroke="var(--accent-2)" stroke-width="3"/>
+</svg>
+          <strong>Redes VPC</strong>
+          <small>VPC · subredes · rutas</small>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M32 6 L54 18 V46 L32 58 L10 46 V18 Z" fill="var(--accent-3)"/>
+  <circle cx="32" cy="32" r="8" fill="#fff"/>
+  <circle cx="32" cy="16" r="4" fill="#fff" opacity=".9"/><circle cx="46" cy="40" r="4" fill="#fff" opacity=".9"/><circle cx="18" cy="40" r="4" fill="#fff" opacity=".9"/>
+  <path d="M32 24 V16 M38 28 L44 37 M26 28 L20 37" stroke="#fff" stroke-width="2.5"/>
+</svg>
+          <strong>Kubernetes</strong>
+          <small>GKE · EKS · AKS</small>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+  <ellipse cx="32" cy="14" rx="22" ry="7" fill="var(--accent)"/>
+  <path d="M10 14 V32 C10 36.4 19.9 40 32 40 C44.1 40 54 36.4 54 32 V14" fill="var(--accent)" opacity=".85"/>
+  <path d="M10 32 V50 C10 54.4 19.9 58 32 58 C44.1 58 54 54.4 54 50 V32" fill="var(--accent)" opacity=".65"/>
+  <path d="M10 32 C10 36.4 19.9 40 32 40 C44.1 40 54 36.4 54 32" fill="none" stroke="#fff" stroke-width="2"/>
+</svg>
+          <strong>Almacenamiento</strong>
+          <small>Cloud Storage · S3 · Blob</small>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+  <circle cx="22" cy="32" r="13" fill="none" stroke="var(--accent-3)" stroke-width="6"/>
+  <path d="M34 32 H56 M48 32 V40 M54 32 V38" stroke="var(--accent-3)" stroke-width="6" stroke-linecap="round"/>
+</svg>
+          <strong>IAM y accesos</strong>
+          <small>Identidades · roles · permisos</small>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M32 6 L54 14 V30 C54 44 44 53 32 58 C20 53 10 44 10 30 V14 Z" fill="var(--accent-2)"/>
+  <path d="M20 26 H44 M24 36 H40 M32 18 V34" stroke="#fff" stroke-width="3" opacity=".9"/>
+</svg>
+          <strong>Firewall y seguridad</strong>
+          <small>Reglas · Cloud Armor · WAF</small>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+  <circle cx="14" cy="32" r="7" fill="var(--accent)"/>
+  <path d="M21 32 H32 M32 32 L48 16 M32 32 L48 32 M32 32 L48 48" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="52" cy="16" r="5" fill="var(--accent-3)"/><circle cx="52" cy="32" r="5" fill="var(--accent-3)"/><circle cx="52" cy="48" r="5" fill="var(--accent-3)"/>
+</svg>
+          <strong>Balanceo de carga</strong>
+          <small>Load balancer · tráfico</small>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+  <rect x="6" y="10" width="52" height="40" rx="6" fill="none" stroke="var(--accent)" stroke-width="4"/>
+  <path d="M14 40 L24 28 L32 34 L42 20 L50 26" fill="none" stroke="var(--accent-2)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 56 H40 M32 50 V56" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+</svg>
+          <strong>Monitoreo</strong>
+          <small>Métricas · logs · alertas</small>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+  <rect x="6" y="14" width="20" height="36" rx="4" fill="var(--accent)" opacity=".6"/>
+  <rect x="38" y="14" width="20" height="36" rx="4" fill="var(--accent-2)"/>
+  <path d="M28 32 H36 M32 26 L36 32 L32 38" stroke="var(--accent-3)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+          <strong>Migración</strong>
+          <small>Migration Center · traslado</small>
+        </div>
+      </div>
+      <div class="api-status" aria-live="polite">
+        <div><span class="dot" id="api-dot"></span><strong>API:</strong> <span id="api-text">consultando...</span></div>
+        <code id="api-url"></code>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre mí -->
+  <section id="sobre-mi">
+    <div class="wrap about">
+      <div>
+        <h2 class="section-title">Sobre mí</h2>
+        <p class="section-sub">Soy consultor de infraestructura y nube. Trabajo con clientes para entender su entorno, proponer soluciones y acompañar su ejecución.</p>
+        <p class="section-sub">Añade aquí tu experiencia, certificaciones y proyectos destacados.</p>
+      </div>
+      <div class="skills">
+        <div class="skill"><strong>Networking</strong><div class="bar"><span style="width:85%"></span></div></div>
+        <div class="skill"><strong>Ciberseguridad</strong><div class="bar"><span style="width:75%"></span></div></div>
+        <div class="skill"><strong>IT Multicloud</strong><div class="bar"><span style="width:80%"></span></div></div>
+        <div class="skill"><strong>Gestión de proyectos</strong><div class="bar"><span style="width:70%"></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="contact">
+        <h2 class="section-title">Hablemos</h2>
+        <p>Si quieres evaluar tu infraestructura, conectar tu red de forma segura o llevar tus cargas a la nube, escríbeme.</p>
+        <a class="btn primary" href="mailto:tu-correo@ejemplo.com">Enviar correo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Mateo Peña Rendón</span>
+    <span>Networking · Ciberseguridad · IT Multicloud</span>
+  </div>
+</footer>
+
+
+<script>
+  // Cambia esta URL por la de tu API (en Codespaces, la del puerto 8001; en Cloud Run, la URL del servicio).
+  const API_URL = "https://potential-succotash-5v5459wgrvq634q5g-8001.app.github.dev";
+
+  (async () => {
+    const dot = document.getElementById("api-dot");
+    const text = document.getElementById("api-text");
+    const url = document.getElementById("api-url");
+    url.textContent = API_URL + "/health";
+    try {
+      const r = await fetch(API_URL + "/health", { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const data = await r.json();
+      dot.classList.add("ok");
+      text.textContent = "en línea (" + data.status + ")";
+    } catch (e) {
+      dot.classList.add("err");
+      text.textContent = "no disponible. Revisa que el puerto esté público y la API esté corriendo.";
+    }
+  })();
+</script>
+</body>
+</html>
